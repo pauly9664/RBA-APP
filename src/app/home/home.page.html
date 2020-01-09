@@ -1,0 +1,453 @@
+<ion-app>
+<ion-header height="100 px" width="750 px">
+  <ion-toolbar color="danger">
+    <ion-title>
+        <img align="center" height="75 px" width="750 px" src="http://portal.rba.go.ke/wp-content/themes/wpbootsrap/bootstrap/images/rbatoplogo.jpg" alt="" />
+    </ion-title>
+        
+    <ion-button href="about.page.html" (click)="openDetailsWithQueryParams()" color="dark" height="10 px" width="55 px">ABOUT THE PORTAL</ion-button>
+  <ion-button (click)="openDetailsWithQueryParams()" color="light" height="10 px" width="55 px">OUR SERVICES</ion-button>
+  <ion-button  (click)="openDetailsWithQueryParams()" color="danger" height="10 px" width="55 px">COMPLAINTS</ion-button>
+  <ion-button  (click)="openDetailsWithService()" color="dark" height="10 px" width="55 px">TALK TO US</ion-button>
+  <ion-button  (click)="openDetailsWithState()" color="light" height="10 px" width="55 px">WHISTLE BLOWER PORTAL</ion-button>
+  <ion-button  (click)="openDetailsWithQueryParams()" color="danger" height="10 px" width="55 px">FAQS</ion-button>
+
+  </ion-toolbar>
+  </ion-header> 
+
+<ion-content style="padding:10px;">
+  <form [formGroup]="complaintsForm" (ngSubmit)='onSubmit()'>
+  <ion-col size-md="6">
+  <div class="ion-padding">
+    <ion-header> COMPLAINTS </ion-header>
+          <ion-button fill="outline" color="primary" (click)="navigateNextTab(0)"
+       [ngClass]="{'currentTab': currentTab==0}" size="small"size="small" height="10 px" width="55 px"
+       border-radius="50%" border="1px">
+        Complainant Details
+      </ion-button>
+      <ion-button fill="outline" color="primary" (click)="navigateNextTab(1)"
+       [ngClass]="{'currentTab': currentTab==1}" size="small" height="10 px" width="55 px"
+       border-radius="50%" border="1px" >
+        Complainants Against
+      </ion-button>
+      <ion-button  fill="outline" color="primary" (click)="navigateNextTab(2)"
+       [ngClass]="{'currentTab': currentTab==2}" size="small" height="10 px" width="55 px"
+       border-radius="50%" border="1px"> Court Proceedings</ion-button>
+      <ion-button fill="outline" color="primary" (click)="navigateNextTab(3)"
+       [ngClass]="{'currentTab': currentTab==3}" size="small" height="10 px" width="55 px"
+       border-radius="50%" border="1px"> Compliant's Facts</ion-button>
+      <ion-button  fill="outline" color="primary" (click)="navigateNextTab(4)"
+       [ngClass]="{'currentTab': currentTab==4}" size="small"height="10 px" width="55 px"
+       border-radius="50%" border="1px"> Details of Representatives</ion-button>
+
+      <div *ngIf="currentTab==0">
+        
+        <ion-card>
+            <ion-header color="dark"> Part A Complaints </ion-header>
+       <ion-card-header color="dark"> PART A: Details of the Complainant </ion-card-header>
+       
+       <ion-item>
+          <ion-select placeholder="Gender">
+   <ion-select-option value="m">Female</ion-select-option>
+   <ion-select-option value="f">Male</ion-select-option>
+   <ion-select-option value="r"> Choose not to say</ion-select-option>
+ </ion-select>
+</ion-item><ion-item>
+                   <ion-select placeholder="Title">
+            <ion-select-option value="m">Mr.</ion-select-option>
+            <ion-select-option value="f">Mrs.</ion-select-option>
+            <ion-select-option value="r"> Rev </ion-select-option>
+          </ion-select>
+        </ion-item>
+       <ion-item>
+         <ion-label position="floating"> Surname</ion-label>
+        <ion-input type="text" placeholder="Enter Surname here..." class="ion-justify-content-end"
+        height="15 px" width="75 px" id="surname"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating"> Fore Names</ion-label>
+        <ion-input type="text" placeholder="Enter your Fore Names..." class="ion-justify-content-end"
+        height="15 px" width="75 px" id="forenames"></ion-input>
+       </ion-item>
+      <ion-item>
+        <ion-label position="floating"> Provide Address </ion-label>
+        <ion-input type="number" placeholder="Enter your Postal Address..." height="15 px" width="75 px" id="provide-address">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating"> Date of Birth </ion-label>
+        <ion-datetime type ="date" placeholder="Enter Date of Birth..." height="15 px" width="75 px" id="date-of-birth">
+        </ion-datetime>
+      </ion-item>
+       <ion-item>
+         <ion-label position="floating"> ID NO. </ion-label>
+        <ion-input type="number" placeholder="Enter ID No...." height="15 px" width="75 px" id="id-number">
+        </ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating"> Telephone Number </ion-label>
+        <ion-input type="number" placeholder="Enter Telephone number..." height="15 px" width="75 px"
+id="telephone"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating"> Email Address </ion-label>
+          <ion-input type="email" placeholder="Enter Email Address..." height="15 px" width="75 px"
+          id="email-address" ></ion-input>
+         </ion-item>
+       <ion-label position="floating"> County</ion-label>
+       <ion-item>
+          <ion-select placeholder="County" id="county">
+   <ion-select-option >Mombasa</ion-select-option>
+   <ion-select-option >Kwale</ion-select-option>
+   <ion-select-option >Kilifi</ion-select-option>
+   <ion-select-option >Tana River</ion-select-option>
+   <ion-select-option >Taita-Taveta</ion-select-option>
+   <ion-select-option >Lamu</ion-select-option>
+   <ion-select-option >Garissa</ion-select-option>
+   <ion-select-option >Wajir</ion-select-option>
+   <ion-select-option >Mandera</ion-select-option>
+   <ion-select-option >Marsabit</ion-select-option>
+   <ion-select-option >Isiolo</ion-select-option>
+   <ion-select-option >Meru</ion-select-option>
+   <ion-select-option >Tharaka Nithi</ion-select-option>
+   <ion-select-option >Embu</ion-select-option>
+   <ion-select-option >Kitui</ion-select-option>
+   <ion-select-option >Machakos</ion-select-option>
+   <ion-select-option >Makueni</ion-select-option>
+   <ion-select-option >Nyandarua</ion-select-option>
+   <ion-select-option >Nyeri</ion-select-option>
+   <ion-select-option >Kirinyaga</ion-select-option>
+   <ion-select-option >Murang'a</ion-select-option>
+   <ion-select-option >Kiambu</ion-select-option>
+   <ion-select-option >Turkana</ion-select-option>
+   <ion-select-option >West Pokot</ion-select-option>
+   <ion-select-option >Samburu</ion-select-option>
+   <ion-select-option >Trans Nzoia</ion-select-option>
+   <ion-select-option >Uasin Gishu</ion-select-option>
+   <ion-select-option >Elgeyo-Marakwet</ion-select-option>
+   <ion-select-option >Nandi</ion-select-option>
+   <ion-select-option >Baringo</ion-select-option>
+   <ion-select-option >Laikipia</ion-select-option>
+   <ion-select-option >Nakuru</ion-select-option>
+   <ion-select-option >Narok</ion-select-option>
+   <ion-select-option >Kajiado</ion-select-option>
+   <ion-select-option >Kericho</ion-select-option>
+   <ion-select-option >Bomet</ion-select-option>
+   <ion-select-option >Kakamega</ion-select-option>
+   <ion-select-option >Vihiga</ion-select-option>
+   <ion-select-option >Bungoma</ion-select-option>
+   <ion-select-option >Busia</ion-select-option>
+   <ion-select-option >Siaya</ion-select-option>
+   <ion-select-option >Kisumu</ion-select-option>
+   <ion-select-option >Homa Bay</ion-select-option>
+   <ion-select-option >Migori</ion-select-option>
+   <ion-select-option >Kisii</ion-select-option>
+   <ion-select-option >Nyamira</ion-select-option>
+   <ion-select-option >Nairobi City</ion-select-option>
+ </ion-select>
+</ion-item>
+       </ion-card>
+       <ion-card>
+       <ion-card-header color="dark"> PART: B The Scheme</ion-card-header>
+       <ion-input>Blank</ion-input>
+       <ion-item>
+         <ion-label position="floating"> Type Name of Sponsor </ion-label>
+        <ion-input type="text" placeholder="Enter Name of the sponsor..."
+        height="15 px" width="75 px" id="name-of-the-sponsor"></ion-input>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating"> Enter Date of Joining the Scheme </ion-label>
+        <ion-datetime type="text" placeholder="Enter date of joining the scheme..."height="15 px" width="75 px" id="date-of-joining-the-scheme"></ion-datetime>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating"> Enter Date of Leaving the Scheme </ion-label>
+        <ion-datetime type="date" placeholder="Enter date of leaving the scheme..."height="15 px" width="75 px" id=date-of-leaving-the-scheme></ion-datetime>
+       </ion-item>
+       <ion-item>
+         <ion-label position="floating"> Enter Reasons of Leaving the Scheme </ion-label>
+        <ion-input  type="text" placeholder="Enter reasons of leaving the scheme..."height="15 px" width="75 px" id="reasons-of-leaving-the-scheme"></ion-input>
+       </ion-item>
+      </ion-card>
+<ion-card>
+       <ion-card-header color="dark"> PART C: Issue a Complaint Against Trustee </ion-card-header>
+              <ion-list>
+          <ion-radio-group>
+            <ion-list-header>
+              <ion-label position="floating" color="dark">Do you wish to bring a complaint against the trustee of the scheme?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>YES</ion-label>
+              <ion-radio slot="start" value="biff" checked></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>NO</ion-label>
+              <ion-radio slot="start" value="griff"></ion-radio>
+            </ion-item>
+        
+                    </ion-radio-group>
+        </ion-list>
+        <ion-item>
+          <ion-label position="floating"> Enter Name of the Trustee </ion-label>
+          <ion-input type="text" placeholder="Enter name of the trustee..." size="1" id="name-of-the-trustee"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating"> Enter Address </ion-label>
+          <ion-input type="text" placeholder="Enter Address..." size="1" id="address-of-the-trustee"><Address></Address></ion-input>
+        </ion-item>
+        </ion-card>
+    </div>
+
+    <div *ngIf="currentTab==1">
+
+<ion-card>
+    <ion-card-header color="dark"> PART: D Issue a Complaint Against Sponsor</ion-card-header>
+              <ion-list> <ion-radio-group>
+                <ion-list-header>
+                  <ion-label color="dark">Do you wish to bring a complaint against the Sponsor of the scheme or Employer?</ion-label>
+                </ion-list-header>
+            
+                <ion-item>
+                  <ion-label>YES</ion-label>
+                  <ion-radio slot="start" value="biff" checked></ion-radio>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label>NO</ion-label>
+                  <ion-radio slot="start" value="griff"></ion-radio>
+                </ion-item>
+            
+                        </ion-radio-group> </ion-list>
+            <ion-item>
+              <ion-label position="floating"> Name of The sponsor</ion-label>
+       <ion-input type="text" placeholder="Name of the Sponsor" id="name-of-the-sponsor-complaint">
+       </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating"> Address of the Sponsor </ion-label>
+       <ion-input type="text" placeholder="Address" id="address-of-the-sponsor"></ion-input>
+      </ion-item>
+      </ion-card>
+      <ion-card>
+      <ion-card-header color="dark"> PART E:Issue a complaint against Manager/Custodian</ion-card-header>
+      <ion-list> <ion-radio-group>
+        <ion-list-header>
+          <ion-label color="dark">Do you wish to Issue a complaint against Manager/Custodian?</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>YES</ion-label>
+          <ion-radio slot="start" value="biff" checked></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>NO</ion-label>
+          <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+    
+                </ion-radio-group> </ion-list>
+    <ion-item>
+      <ion-label position="floating"> Name of the Manager/Custodian/Administration </ion-label>
+<ion-input type="text" placeholder="Name of the Manager/Custodian/Administration" id="name-of-the-manager"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating"> Address(es) of the contact person if known </ion-label>
+<ion-input type="text" placeholder="Address(es) of the contact person if known" id="address-of-the-manager"></ion-input>
+</ion-item>
+</ion-card>
+<ion-card>
+      <ion-card-header color="dark"> PART F: THis Complaint ever been reported before?</ion-card-header>
+      <ion-list> <ion-radio-group>
+        <ion-list-header>
+          <ion-label color="dark">To your knowledge has this complaint or a related
+            matter been brought to the authority before?
+          </ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>YES</ion-label>
+          <ion-radio slot="start" value="biff" checked></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>NO</ion-label>
+          <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+    
+                </ion-radio-group> </ion-list>
+    <ion-item>
+<ion-input type="text" placeholder="If YES provide details including RBA refference" id="report-details"></ion-input>
+</ion-item>
+</ion-card>        
+         </div>
+         <div *ngIf="currentTab==2">
+           <ion-card>
+<ion-card-header color="dark"> PART:G Previous Proceedings</ion-card-header>
+<ion-list> <ion-radio-group>
+    <ion-list-header>
+      <ion-label color="dark">Have there been any Court or 
+        Industrial Court proceedings in connection with this dispute?
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>YES</ion-label>
+      <ion-radio slot="start" value="biff" checked></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>NO</ion-label>
+      <ion-radio slot="start" value="griff"></ion-radio>
+    </ion-item>
+
+            </ion-radio-group> </ion-list>
+            <ion-list> <ion-radio-group>
+                <ion-list-header>
+                  <ion-label color="dark">Has this dispute been 
+                    referred to an arbitration process under the Arbitration Act or other process?
+                  </ion-label>
+                </ion-list-header>
+            
+                <ion-item>
+                  <ion-label>YES</ion-label>
+                  <ion-radio slot="start" value="biff" checked></ion-radio>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label>NO</ion-label>
+                  <ion-radio slot="start" value="griff"></ion-radio>
+                </ion-item>
+            
+                        </ion-radio-group> </ion-list>
+                        <ion-list> <ion-radio-group>
+                            <ion-list-header>
+                              <ion-label color="dark">Has this dispute been
+                                 referred to any other regulatory body
+                                  or Tribunal apart from the Authority?
+                              </ion-label>
+                            </ion-list-header>
+                        
+                            <ion-item>
+                              <ion-label>YES</ion-label>
+                              <ion-radio slot="start" value="biff" checked></ion-radio>
+                            </ion-item>
+                        
+                            <ion-item>
+                              <ion-label>NO</ion-label>
+                              <ion-radio slot="start" value="griff"></ion-radio>
+                            </ion-item>
+                        
+                                    </ion-radio-group> </ion-list>
+                                    <ion-item>
+ <ion-input type="text" placeholder="If answer to any of the last three questions is YES please
+ give details " id="previous-proceedings"></ion-input>
+</ion-item>
+<ion-label color="dark"> **Attach copies of all documents and pleadings presented and the 
+  judgement or decision made by the court, tribunal or arbitrator.** </ion-label>
+  <ion-input type="file" name="file" id="file" class="inputfile"> </ion-input>
+  </ion-card>
+           </div>
+           <div *ngIf="currentTab==3">
+             <ion-card>
+<div><ion-card-header color="dark"> PART:H FACTS RELATING TO THE COMPLAINT </ion-card-header></div>
+<div>
+<ion-label color="dark"> 
+    Please clearly and concisely explain the complaint or dispute,
+     giving dates and what you think should be done to put matters 
+     right. It is mandatory that you enclose copies of all relevant 
+     correspondence or documents in your possession related to this 
+     complaint that may assist us in addressing the complaint.
+      E.g. evidence of your membership to the scheme such as copy 
+      of pay slip or member statement.
+</ion-label>
+</div>
+    <ion-label color="dark">You do not have to use this space. 
+      If you wish you may complete a separate sheet, typed if possible. 
+      If using handwriting, please write clearly and in black ink
+       (as with the rest of this form). Then attach it below.
+</ion-label>
+<ion-input type="text" placeholder="Clearly and concisely expalin the complaint or 
+dispute" height="750 px" width="750 px" id="complaint-explanation"></ion-input>
+</ion-card>
+           </div>
+           <div *ngIf="currentTab==4"> 
+             <ion-card>
+<ion-card-header color="dark"> PART I: Details of the Representatives (If Any) </ion-card-header>
+<ion-input placeholder="Name and Address of the Representative" id="name-address-of-representative"></ion-input>
+<ion-input placeholder="Representatives day time telephone number" type="tel" id="representative-telephone-number"></ion-input>
+<ion-list> <ion-radio-group>
+    <ion-list-header>
+      <ion-label color="dark">Do you wish the RBA to correspond with this 
+        representative instead of with you? 
+      </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>YES</ion-label>
+      <ion-radio slot="start" value="biff" checked></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>NO</ion-label>
+      <ion-radio slot="start" value="griff"></ion-radio>
+    </ion-item>
+            </ion-radio-group> </ion-list>
+          </ion-card>     
+          <ion-card>                  
+            <ion-card-header color="dark"> PART J: Signature </ion-card-header>
+
+<ion-label color="dark"> ***..Please note that copies of this form and any
+   enclosures or papers received from you will be sent for comment
+    to the people or bodies that you have named as respondents.***
+   </ion-label>
+  
+   <div><ion-input type="text" placeholder="Complainant/Representative signature
+   (fill as appropriate)" id="representative-signature"></ion-input></div>
+   <ion-label color="dark"> If signed by the representative, please enclose evidence of the Authority
+        </ion-label>
+        </ion-card>
+      
+        <div margin-vartical text-right> 
+          
+          <ion-button (click)="onSubmit()"  type="submit" color="danger" id="submit-button">  Submit <ion-icon name="checkbox"></ion-icon>
+           </ion-button>
+        
+        </div>
+    <div><ion-label color="dark">
+      Return this form with enclosures to:
+      </ion-label></div>
+      <div> <ion-label color="dark">
+        Chief Executive Officer Retirement Benefits Authority Rahimtulla Tower,</ion-label></div>
+         <div><ion-label color="dark">13th Floor P. O. Box 57733,</ion-label></div>
+         <div><ion-label color="dark">
+          City Square 00200 - Nairobi
+      
+    </ion-label></div>
+<ion-list id="complaint"> </ion-list> 
+           </div>
+         
+
+
+  <div margin-vartical text-right>
+<ion-button  tabTitle="Tab 1" *ngIf="currentTab <3"  (click)="navigateNextTab()" fill="outline" color="danger"> 
+    <ion-icon name="fastforward"></ion-icon> Next Page
+</ion-button>
+  </div>
+          <div margin-vartical text-left>      
+<ion-button tabTitle="Tab 1" *ngIf="currentTab>0"  (click)="navigatePreviousTab()" fill="outline" color="dark"> 
+    <ion-icon name="rewind"></ion-icon> previous Page
+  </ion-button>
+</div>
+     </div>
+                 </ion-col>
+                 <form>
+<!-- </ion-content> -->
+
+<style>
+.currentTab{
+  background-color : red!important;
+}
+</style>
+<script src="about.page.html"> </script>
+<script src="details.js"> </script>
+<!-- </ion-app> -->

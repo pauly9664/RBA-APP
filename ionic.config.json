@@ -1,0 +1,7 @@
+{
+  "name": "RBA APP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
